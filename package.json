@@ -1,0 +1,33 @@
+{
+  "name": "pixelmask",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "engine": "swift build --package-path native-engine -c release && mkdir -p src-tauri/binaries && cp -f native-engine/.build/release/engine src-tauri/binaries/engine && cp -f native-engine/.build/release/engine src-tauri/binaries/engine-aarch64-apple-darwin",
+    "engine:dev": "cd native-engine && swift run -c release",
+    "build": "tsc && vite build",
+    "preview": "npm run build && wrangler dev",
+    "tauri": "tauri",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-dialog": "^2.7.2",
+    "@tauri-apps/plugin-opener": "^2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.54.9",
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "wrangler": "^4.131.2"
+  }
+}
